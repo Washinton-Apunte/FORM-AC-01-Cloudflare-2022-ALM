@@ -1,0 +1,39 @@
+
+\section{Lecciones aprendidas para el PFC (SREI)}
+
+El incidente de Cloudflare demuestra que un cambio
+mal aplicado puede afectar varios servicios al mismo
+tiempo. En nuestro proyecto SREI, esto nos lleva a
+considerar tres riesgos que debemos prevenir desde
+el desarrollo.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L L@{}}
+\toprule
+\textbf{Riesgo en SREI} & \textbf{Medida preventiva} \\
+\midrule
+Un cambio incorrecto en la configuración del servidor
+podría dejar el sistema fuera de servicio.
+&
+Probar los cambios en un entorno de pruebas antes
+de aplicarlos al servidor principal.
+\\
+\addlinespace
+Una actualización podría provocar errores en el
+registro o consulta de eventos.
+&
+Realizar actualizaciones graduales y mantener una
+versión anterior para poder restaurarla.
+\\
+\addlinespace
+Una falla del servidor podría impedir que docentes
+y estudiantes accedan a SREI.
+&
+Implementar monitoreo del servicio, respaldos
+periódicos y un procedimiento de recuperación.
+\\
+\bottomrule
+\end{tabularx}
+\end{table}
