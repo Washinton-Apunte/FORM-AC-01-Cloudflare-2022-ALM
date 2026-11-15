@@ -1,0 +1,58 @@
+% Hoja de UNA página para el SGA: datos del equipo y URL del repositorio.
+% Compilar desde esta carpeta:  pdflatex entrega-sga.tex
+% Si el repositorio queda con otro nombre o en otra cuenta, cambiar \repourl.
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{mathptmx}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{../img/}{img/}}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+
+\newcommand{\repourl}{https://github.com/Washinton-Apunte/FORM-AC-01-Cloudflare-2022-ALM}
+
+\begin{document}
+\begin{center}
+  \begin{minipage}[c]{0.16\textwidth}\centering
+    \includegraphics[height=2.7cm]{logo-uteq.png}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.66\textwidth}\centering
+    {\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL\\[2pt] DE QUEVEDO\par}
+    \vspace{6pt}
+    {\bfseries Facultad de Ciencias de la Computación\\[1pt] y Diseño Digital\par}
+    \vspace{3pt}
+    {\itshape Carrera de Software\par}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.16\textwidth}\centering
+    \includegraphics[height=2.5cm]{logo-facultad.png}
+  \end{minipage}
+  \par\vspace{1.4cm}
+  {\large\bfseries Aplicaciones Distribuidas (ISR-701)\par}
+  \vspace{6pt}
+  FORM-AC-01 — Análisis de caso: fallo real en un sistema distribuido\par
+  \vspace{4pt}
+  Caso: caída de Cloudflare del 21 de junio de 2022\par
+\end{center}
+
+\vspace{1.2cm}
+\begin{tabular}{@{}ll@{}}
+  \textbf{Equipo:}           & ALM \\[4pt]
+  \textbf{Integrantes:}      & Apunte Pazmiño Washington German \\
+                             & Loor Suarez Jordan Josue \\
+                             & Macias Vasquez Cesar Abrahan \\[4pt]
+  \textbf{Docente:}          & Gleiston Guerrero Ulloa, PhD \\[4pt]
+  \textbf{Nivel y paralelo:} & Séptimo nivel, paralelo B \\[4pt]
+  \textbf{Fecha:}            & 15 de noviembre de 2026 \\
+\end{tabular}
+
+\vspace{1.2cm}
+\textbf{URL del repositorio:}\par
+\vspace{6pt}
+\mbox{\url{\repourl}}
+\end{document}
