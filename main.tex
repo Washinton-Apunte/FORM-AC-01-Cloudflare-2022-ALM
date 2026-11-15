@@ -1,0 +1,141 @@
+% =====================================================================
+% FORM-AC-01 — Análisis de caso: fallo real en un sistema distribuido
+% Caso: caída de Cloudflare del 21 de junio de 2022
+% Equipo ALM — Aplicaciones Distribuidas (ISR-701), UTEQ
+%
+% Compilar con pdfLaTeX + Biber:
+%   pdflatex main.tex
+%   biber main
+%   pdflatex main.tex
+%   pdflatex main.tex
+% (o simplemente: latexmk -pdf main.tex)
+%
+% Límite del enunciado: el cuerpo (apartados 1 a 6) ocupa como máximo
+% 2 páginas, sin contar la carátula ni las referencias.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{mathptmx}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{array,booktabs,tabularx}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[autostyle=false,style=english]{csquotes}
+\usepackage[backend=biber,style=ieee,maxbibnames=2,minbibnames=1,urldate=long]{biblatex}
+\addbibresource{referencias.bib}
+\usepackage{xpatch}
+% Páginas web sin fecha: "(s. f.)" en lugar de "()"
+\xpatchbibdriver{online}
+  {\printtext[parens]{\usebibmacro{date}}}
+  {\iffieldundef{year}{\printtext[parens]{\bibstring{nodate}}}{\printtext[parens]{\usebibmacro{date}}}}
+  {}{\PackageWarning{main}{No se pudo ajustar el driver online}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+% --- Datos de la entrega (si el repo cambia de nombre o de cuenta, se cambia aquí) ---
+\newcommand{\repourl}{https://github.com/Washinton-Apunte/FORM-AC-01-Cloudflare-2022-ALM}
+
+% --- Formato compacto para respetar las 2 páginas ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt plus 1pt}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{6pt}{2pt}
+\captionsetup{font=small,labelfont=bf,labelsep=period,skip=3pt}
+\captionsetup[table]{position=above}
+\setlist[itemize]{nosep,leftmargin=*}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.05}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+
+% --- Ajustes IEEE en español: "et al." en cursiva, "pp.", guion largo en rangos ---
+\DefineBibliographyStrings{spanish}{%
+  andothers = {\mkbibemph{et~al\adddot}},
+  pages     = {pp\adddot},
+  page      = {p\adddot},
+  url       = {disponible en},
+  urlseen   = {consultado el},
+}
+\DefineBibliographyExtras{spanish}{\protected\def\bibrangedash{\textendash\penalty\hyphenpenalty}}
+
+\begin{document}
+
+% ---------------------------------------------------------------------
+% CARÁTULA (no cuenta para las 2 páginas)
+% ---------------------------------------------------------------------
+\begin{titlepage}
+  \centering
+  \begin{minipage}[c]{0.17\textwidth}\centering
+    \includegraphics[height=2.9cm]{img/logo-uteq.png}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.62\textwidth}\centering
+    {\Large\bfseries UNIVERSIDAD TÉCNICA ESTATAL\\[2pt] DE QUEVEDO\par}
+    \vspace{0.3cm}
+    {\large\bfseries Facultad de Ciencias de la Computación\\[1pt] y Diseño Digital\par}
+    \vspace{0.2cm}
+    {\large\itshape Carrera de Software\par}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.17\textwidth}\centering
+    \includegraphics[height=2.7cm]{img/logo-facultad.png}
+  \end{minipage}
+  \par\vspace{1.6cm}
+  {\Large\bfseries Aplicaciones Distribuidas (ISR-701)\par}
+  \vspace{0.3cm}
+  {\large FORM-AC-01 — Análisis de caso: fallo real en un sistema distribuido\par}
+  \vspace{1.6cm}
+  {\LARGE\bfseries Caída de Cloudflare del 21 de junio de 2022:\\[2pt]
+   retiro de prefijos BGP en 19 centros de datos\par}
+  \vspace{1.8cm}
+  {\large\bfseries Equipo ALM\par}
+  \vspace{0.3cm}
+  {\large Apunte Pazmiño Washington German\\
+          Loor Suarez Jordan Josue\\
+          Macias Vasquez Cesar Abrahan\par}
+  \vfill
+  \begin{tabular}{@{}rl@{}}
+    \textbf{Docente:}          & Gleiston Guerrero Ulloa, PhD \\
+    \textbf{Nivel y paralelo:} & Séptimo nivel, paralelo B \\
+    \textbf{Semana:}           & 3 (9 al 15 de noviembre de 2026) \\
+    \textbf{Fecha de entrega:} & 15 de noviembre de 2026 \\
+  \end{tabular}
+  \par\vspace{0.8cm}
+  \textbf{Repositorio:} \url{\repourl}
+  \par\vspace{0.4cm}
+  Quevedo, Ecuador
+\end{titlepage}
+
+% ---------------------------------------------------------------------
+% CUERPO (apartados 1 a 6, máximo 2 páginas)
+% ---------------------------------------------------------------------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\label{inicio-cuerpo}
+
+\input{secciones/01-descripcion}
+\input{secciones/02-causas-raiz}
+\input{secciones/03-impacto}
+\input{secciones/04-unidad1}
+\input{secciones/05-mitigacion}
+\input{secciones/06-lecciones-pfc}
+
+\label{fin-cuerpo}
+
+% ---------------------------------------------------------------------
+% REFERENCIAS, DECLARACIÓN DE IA Y OBSERVACIONES (fuera de las 2 páginas)
+% ---------------------------------------------------------------------
+\clearpage
+\printbibliography[title={Referencias}]
+
+\input{secciones/declaracion-ia}
+\input{secciones/observaciones}
+
+\end{document}
