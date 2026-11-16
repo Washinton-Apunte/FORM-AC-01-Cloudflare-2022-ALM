@@ -1,7 +1,8 @@
 \section{Causas raíz}
-Como se detalla en el diagrama de Ishikawa (Figura \ref{fig:ishikawa}), la caída se percibió inicialmente 
-como un ciberataque (síntoma), pero la causa raíz técnica fue un fallo interno. Al desplegar 
-una nueva arquitectura, un error humano al reordenar las políticas BGP provocó el retiro automático de prefijos de red críticos \cite{cloudflare2022}.
+Como detalla el diagrama de Ishikawa (Figura \ref{fig:ishikawa}), el incidente se originó por un error humano 
+interno y una brecha de procedimiento durante la transición a la arquitectura MCP. Un cambio con el orden de 
+términos incorrecto en las políticas BGP provocó que los enrutadores anunciaran el retiro automático de prefijos de red críticos, 
+aislando los centros de datos \cite{cloudflare2022}.
 
 \begin{figure}[htbp]
     \centering
