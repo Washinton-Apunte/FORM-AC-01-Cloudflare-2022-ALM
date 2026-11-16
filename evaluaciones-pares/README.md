@@ -1,18 +1,5 @@
+# Evaluaciones entre pares
 
-# Evaluaciones entre pares — FORM-AC-01
+El caso no se expuso en clase: para esta actividad formativa el docente no programó exposición. Por eso, hasta el cierre del 15 de noviembre de 2026, el equipo ALM no recibió evaluaciones entre pares ni observaciones escritas del docente.
 
-Esta carpeta está destinada a conservar las evaluaciones y observaciones recibidas durante las presentaciones en clase del análisis del incidente de Cloudflare del 21 de junio de 2022.
-
-## Contenido
-
-Las evaluaciones se incorporarán después de la exposición y se conservarán como evidencia de la retroalimentación recibida por el equipo ALM.
-
-## Organización
-
-- Registrar las evaluaciones recibidas de otros equipos.
-- Conservar los documentos originales de las evaluaciones.
-- Relacionar las observaciones recibidas con los cambios realizados en el informe.
-
-## Estado
-
-Las evaluaciones se incorporarán durante las presentaciones en clase.
+Si llegan después, se guardan en esta carpeta como PDF (escaneo o foto), con el nombre del equipo evaluador, por ejemplo `evaluacion-equipo-XXX.pdf`, y cada observación se agrega como fila en `secciones/observaciones.tex`.
