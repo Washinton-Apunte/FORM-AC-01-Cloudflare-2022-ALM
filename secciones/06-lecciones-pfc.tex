@@ -1,13 +1,13 @@
 
 \section{Lecciones aprendidas para el PFC (SREI)}
 
-
-El incidente de Cloudflare demuestra cómo un cambio
-incorrecto en la configuración de red puede afectar
-varios servicios al mismo tiempo \cite{cloudflare2022}.
-A partir de este caso, identificamos tres riesgos que
-debemos considerar en el desarrollo de nuestro proyecto
-SREI, junto con sus respectivas medidas preventivas.
+El incidente de Cloudflare demuestra que una
+configuración incorrecta, un despliegue sin controles
+y la falta de reversión pueden afectar varios servicios
+al mismo tiempo \cite{cloudflare2022}. En SREI
+identificamos tres riesgos relacionados con las
+tecnologías que utilizamos y las medidas que
+incorporaremos en TA-PFC-E1.
 
 \begin{table}[htbp]
 \centering
@@ -16,25 +16,29 @@ SREI, junto con sus respectivas medidas preventivas.
 \toprule
 \textbf{Riesgo en SREI} & \textbf{Medida preventiva} \\
 \midrule
-Un cambio incorrecto en la configuración del servidor
-podría dejar el sistema fuera de servicio.
+Una configuración incorrecta de la conexión entre
+Angular y Spring Boot podría impedir que los usuarios
+accedan a las funciones del sistema.
 &
-Probar los cambios en un entorno de pruebas antes
-de aplicarlos al servidor principal.
+Verificar las direcciones y configuraciones de conexión
+en un entorno de pruebas antes de publicar cambios.
 \\
 \addlinespace
-Una actualización podría provocar errores en el
-registro o consulta de eventos.
+Una actualización del backend Spring Boot o de las
+tablas de PostgreSQL podría provocar errores en el
+registro y consulta de eventos.
 &
-Realizar actualizaciones graduales y mantener una
-versión anterior para poder restaurarla.
+Probar las actualizaciones y migraciones antes de
+aplicarlas, conservando respaldos de la base de datos.
 \\
 \addlinespace
-Una falla del servidor podría impedir que docentes
-y estudiantes accedan a SREI.
+Un cambio en Docker Compose podría afectar
+simultáneamente los contenedores y dejar SREI
+fuera de servicio.
 &
-Implementar monitoreo del servicio, respaldos
-periódicos y un procedimiento de recuperación.
+Probar los cambios antes del despliegue, actualizar
+los servicios de forma controlada y conservar las
+versiones anteriores para facilitar la reversión.
 \\
 \bottomrule
 \end{tabularx}

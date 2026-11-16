@@ -1,21 +1,25 @@
 
 \section{Mitigación aplicada por Cloudflare}
 
-Para recuperar el servicio, los ingenieros de Cloudflare
-utilizaron procedimientos de acceso de respaldo, ya que
-el fallo también dificultaba la conexión con los centros
-afectados. Una vez identificada la causa, comenzaron a
-revertir la configuración incorrecta de los routers.
-La recuperación fue gradual y, a las 07:42 UTC, los
-19 centros de datos afectados estaban nuevamente
-operativos \cite{cloudflare2022}.
-
-Después del incidente, Cloudflare anunció mejoras en
-sus procedimientos. Entre ellas, realizar pruebas en
-centros con arquitectura MCP antes de extender los
-cambios, revisar las reglas de enrutamiento para evitar
-errores en su orden y automatizar la reversión de
-configuraciones cuando se detecten problemas.
-Estas medidas buscan reducir el impacto de futuros
-fallos y acelerar la recuperación del servicio
+\textbf{Medidas inmediatas.}
+Como el problema también dificultaba el acceso a los
+centros afectados, los ingenieros utilizaron
+procedimientos de respaldo para recuperar el control
+de los equipos. Después de identificar la causa,
+comenzaron a revertir la configuración incorrecta
+de los routers. La recuperación se realizó de forma
+gradual y finalizó a las 07:42 UTC, cuando los 19
+centros afectados volvieron a estar operativos
 \cite{cloudflare2022}.
+
+\textbf{Cambios permanentes.}
+Después del incidente, Cloudflare identificó tres
+mejoras: incorporar pruebas específicas para los
+centros con arquitectura MCP antes de extender los
+cambios; rediseñar las políticas de enrutamiento
+para evitar errores en el orden de sus reglas; y
+mejorar la automatización de los despliegues,
+incluyendo una reversión automática de tipo
+\textit{commit-confirm}. Estas medidas buscan reducir
+el alcance de futuros fallos y acelerar la recuperación
+del servicio \cite{cloudflare2022}.
