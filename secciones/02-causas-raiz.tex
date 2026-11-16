@@ -1,5 +1,7 @@
 \section{Causas raíz}
-Como se detalla en el diagrama de Ishikawa (Figura \ref{fig:ishikawa}), la interrupción no fue producto de un ciberataque (síntoma), sino de un fallo de configuración interno. La causa raíz técnica se originó durante la transición a la nueva arquitectura Multi-Colo PoP (MCP), cuando un error operativo al reordenar los términos de las políticas de enrutamiento BGP provocó el retiro involuntario de prefijos de red críticos en los enrutadores perimetrales \cite{cloudflare2022}.
+Como se detalla en el diagrama de Ishikawa (Figura \ref{fig:ishikawa}), la caída se percibió inicialmente 
+como un ciberataque (síntoma), pero la causa raíz técnica fue un fallo interno. Al desplegar 
+una nueva arquitectura, un error humano al reordenar las políticas BGP provocó el retiro automático de prefijos de red críticos \cite{cloudflare2022}.
 
 \begin{figure}[htbp]
     \centering
